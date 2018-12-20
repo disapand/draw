@@ -1,5 +1,5 @@
 <template>
-  <div class="infoCard">
+  <div class="infoCard" v-bind:class="{infoCardBordered: bordered}">
     <div class="img">
       <div class="prizeImg" v-bind:style="prizeImgShow"></div>
     </div>
@@ -8,7 +8,7 @@
       <p class="prizeTitle">{{ prizeTitle }}</p>
       <span class="prizePrice">￥{{ prizePrice }}元</span>
       <div class="prizeOwners">
-        <img :src="prizeOwner" alt="获奖者" title="虚位以待">
+        <img :src="prizeOwner" alt="获奖者" title="虚位以待" class="prizeOwner" v-for="index in prizeNumber" :key="index">
       </div>
     </div>
   </div>
@@ -18,6 +18,10 @@
 export default {
   name: 'infoCard',
   props: {
+    bordered: {
+      type: Boolean,
+      default: false
+    },
     prizeName: {
       type: String,
       default: '一等奖'
@@ -58,7 +62,7 @@ export default {
 <style scoped lang="less">
   .infoCard {
     background-color: #fff;
-    padding: 15px;
+    padding: 30px;
     display: flex;
     cursor: pointer;
     &:hover {
@@ -69,6 +73,13 @@ export default {
         transition: width 0.2s ease-in-out;
       }
     }
+  }
+  .infoCardBordered {
+    border: solid 5px #0094d8;
+  }
+
+  .img {
+    padding: 30px;
   }
 
   .info {
@@ -112,6 +123,14 @@ export default {
   }
 
   .prizeOwners {
-    height: 100%;
+    height: 100px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .prizeOwner {
+    width: 96px;
+    margin: 0 15px;
+    border-radius: 50%;
   }
 </style>
