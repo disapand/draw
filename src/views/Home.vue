@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home" v-bind:style="imgSize">
+    <info-card class="infoCard" prizeTitle="华为P20双摄全面屏手机 6GB+128GB 极光色" prizePrice="3888"></info-card>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import infoCard from '@/components/infoCard'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    infoCard
+  },
+  data () {
+    return {
+      imgSize: {
+        height: document.documentElement.clientHeight + 'px',
+        width: document.documentElement.clientWidth + 'px'
+      }
+    }
   }
 }
 </script>
+
+<style scoped lang="less">
+  .home{
+    background: url('../assets/bg.jpg') no-repeat center center / cover;
+    padding: 15px;
+  }
+  .infoCard {
+    width: 30%;
+  }
+</style>
