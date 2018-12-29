@@ -123,14 +123,13 @@ export default {
   }
 
   .prizeOwners {
-    height: 100px;
     margin-top: 10px;
     text-align: center;
   }
 
   .prizeOwner {
-    width: 96px;
-    margin: 0 15px;
+    width: 30%;
+    margin: 0 1.5%;
     border-radius: 50%;
   }
 </style>
